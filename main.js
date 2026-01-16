@@ -89,7 +89,7 @@ const sounds = {
 //Creating Fake Symbols
 function createSymbol(type,color) {
     const symbol = new PIXI.Graphics();
-    symbol.beginFill(0xffffff);
+    symbol.beginFill(color);
     symbol.drawRoundedRect(0, 0, SYMBOL_SIZE, SYMBOL_SIZE, 16);
     symbol.endFill();
     symbol.type = type;
