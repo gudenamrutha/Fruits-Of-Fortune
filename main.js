@@ -326,38 +326,31 @@ function onNormalizeSymbols(reel) {
 }
 
 function getVisibleSymbols() {
-    /*return reels.map((reel) => {
-        return reel.symbols.find((symbol) => {
-            return Math.abs(symbol.y - SYMBOL_HEIGHT) < 1
-        });
-    });*/
+    let winningRows = 0;
 
-    let winrow = 0;
-    //Get 1st symbol Y pos compare it will loop of Y pos other than 0 index when Y pos value are equal compare type 
-    for (let i = 0; i < reels[0].symbols.length; i++) {
-        let count = 1;
-        for (let j = 1; j < reels.length; j++) {
-            let flag_same = 0;
-            for (let k = 0; k < reels.symbols.length; k++) {
-                if (reels[0].symbols[i].y == reels[j].symbols[k].y) {
-                    if (reels[0].symbols[i].type === reels[j].symbols[k].type) {
-                        flag_same = 1;
-                    }
-                }
-            }
+    // Loop through each ROW
+    for (let row = 0; row < SYMBOLS_PER_REEL; row++) {
+        const firstSymbol = reels[0].symbols[row];
+        let isRowMatch = true;
 
-            if (flag_same == 1) {
-                count++;
+        // Compare same row across all reels
+        for (let col = 1; col < reels.length; col++) {
+            const currentSymbol = reels[col].symbols[row];
+
+            if (firstSymbol.type !== currentSymbol.type) {
+                isRowMatch = false;
+                break;
             }
         }
 
-        if (count == 5) {
-            winrow++;
+        if (isRowMatch) {
+            winningRows++;
         }
     }
 
-    return winrow;
+    return winningRows;
 }
+
 
 //Creating Balance Text
 const balance_text = new PIXI.Text(`Balance : ${balance}`, {
