@@ -354,7 +354,7 @@ function getVisibleSymbols() {
             
         }
 
-        if (count == 5) {
+        if (count == 3) {
             winningRows++;
         }
     }
