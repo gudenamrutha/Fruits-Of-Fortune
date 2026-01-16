@@ -341,6 +341,7 @@ function getVisibleSymbols() {
 
                 if (firstSymbol.y === currentSymbol.y) {
                     if (firstSymbol.type === currentSymbol.type) {
+                        console.log("matched with first symbol");
                         flag_same = 1;
                         
                     }
