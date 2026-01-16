@@ -327,6 +327,7 @@ function onNormalizeSymbols(reel) {
 
 function getVisibleSymbols() {
     let winningRows = 0;
+    let matching3 = 0;
 
     // Loop through each ROW
     for (let row = 0; row < SYMBOLS_PER_REEL; row++) {
@@ -359,12 +360,15 @@ function getVisibleSymbols() {
             
         }
 
-        if (count == 3) {
+        if (count == 5) {
             winningRows++;
+        }
+        else if (count >= 3) {
+            matching3++;
         }
     }
 
-    return winningRows;
+    return { winningRows, matching3 };
 }
 
 
@@ -380,9 +384,15 @@ balance_text.y = 20;
 gameContainer.addChild(balance_text);
 
 function checkWin() {
-    const winrow = getVisibleSymbols();
-    if (winrow == 0) {
+    const result = getVisibleSymbols();
+    if (result.winrow == 0) {
         console.log("No Win");
+        if (result.match3 == 0) {
+            console.log("No Match");
+        }
+        else {
+            console.log("Number of matching rows" + match3);
+        }
     }
     else {
         console.log("Number of Win Rows" + winrow);
