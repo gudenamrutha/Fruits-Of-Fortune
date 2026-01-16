@@ -332,18 +332,29 @@ function getVisibleSymbols() {
     for (let row = 0; row < SYMBOLS_PER_REEL; row++) {
         const firstSymbol = reels[0].symbols[row];
         let isRowMatch = true;
-
+        let count = 1;
         // Compare same row across all reels
         for (let col = 1; col < reels.length; col++) {
-            const currentSymbol = reels[col].symbols[row];
+            let flag_same = 0; 
+            for (let k = 0; k < SYMBOLS_PER_REEL; k++) {
+                const currentSymbol = reels[col].symbols[k];
 
-            if (firstSymbol.type !== currentSymbol.type) {
-                isRowMatch = false;
-                break;
+                if (firstSymbol.y === currentSymbol.y) {
+                    if (firstSymbol.type === currentSymbol.type) {
+                        flag = 1;
+                        
+                    }
+                }
+               
             }
+
+            if (flag == 1) {
+                count++;
+            }
+            
         }
 
-        if (isRowMatch) {
+        if (count == 5) {
             winningRows++;
         }
     }
