@@ -339,12 +339,16 @@ function getVisibleSymbols() {
             for (let k = 0; k < SYMBOLS_PER_REEL; k++) {
                 const currentSymbol = reels[col].symbols[k];
 
-                if (firstSymbol.y === currentSymbol.y) {
+                if (Math.abs(firstSymbol.y - currentSymbol.y) < EPSILON) {
                     if (firstSymbol.type === currentSymbol.type) {
                         console.log("matched with first symbol");
                         flag_same = 1;
-                        
+
                     }
+                }
+                else {
+                    Console.log("First symbol Y" + firstSymbol.y);
+                    Console.log("Current symbol Y" + currentSymbol.y);
                 }
                
             }
