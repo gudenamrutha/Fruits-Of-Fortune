@@ -76,7 +76,7 @@ const SYMBOL_TYPES = [
         color : 0xf5f5f5
     }
 ];
-
+const FRUIT_SCALE = 0.7;
 let balance = 1000;
 const BET = 50;
 
@@ -97,8 +97,10 @@ function createSymbol(type,color) {
     //Adding image inside color block
     const image = PIXI.Sprite.from(type);
     image.anchor.set(0.5);
-    image.x = symbol.width;
-    image.y = symbol.height
+    image.width = symbol.width * FRUIT_SCALE;
+    image.height = symbol.height * FRUIT_SCALE;
+    image.x = symbol.width/2;
+    image.y = symbol.height / 2;
     symbol.addChild(image);
     return symbol;
 }
