@@ -341,14 +341,14 @@ function getVisibleSymbols() {
 
                 if (firstSymbol.y === currentSymbol.y) {
                     if (firstSymbol.type === currentSymbol.type) {
-                        flag = 1;
+                        flag_same = 1;
                         
                     }
                 }
                
             }
 
-            if (flag == 1) {
+            if (flag_same == 1) {
                 count++;
             }
             
