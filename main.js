@@ -347,8 +347,8 @@ function getVisibleSymbols() {
                     }
                 }
                 else {
-                    Console.log("First symbol Y" + firstSymbol.y);
-                    Console.log("Current symbol Y" + currentSymbol.y);
+                    console.log("First symbol Y" + firstSymbol.y);
+                    console.log("Current symbol Y" + currentSymbol.y);
                 }
                
             }
