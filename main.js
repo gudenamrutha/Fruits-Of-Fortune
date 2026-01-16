@@ -348,8 +348,8 @@ function getVisibleSymbols() {
                     }
                 }
                 else {
-                    console.log("First symbol Y" + firstSymbol.y);
-                    console.log("Current symbol Y" + currentSymbol.y);
+                   /* console.log("First symbol Y" + firstSymbol.y);
+                    console.log("Current symbol Y" + currentSymbol.y);*/
                 }
                
             }
@@ -391,11 +391,11 @@ function checkWin() {
             console.log("No Match");
         }
         else {
-            console.log("Number of matching rows" + match3);
+            console.log("Number of matching rows" + result.match3);
         }
     }
     else {
-        console.log("Number of Win Rows" + winrow);
+        console.log("Number of Win Rows" + result.winrow);
     }
    /* const visible = getVisibleSymbols();
     const firstType = visible[0].type;
