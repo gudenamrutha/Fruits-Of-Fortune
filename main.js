@@ -96,6 +96,7 @@ function createSymbol(type,color) {
 
     //Adding image inside color block
     const image = PIXI.Sprite.from(type);
+    image.anchor.set(0.5);
     image.x = symbol.width;
     image.y = symbol.height
     symbol.addChild(image);
