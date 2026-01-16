@@ -309,8 +309,8 @@ function stopReel(reel) {
 function onSpinComplete() {
     //sounds.stop.play();
     const result = checkWin();
-    applyWin(result);
-    highlightWin(result);
+/*    applyWin(result);
+    highlightWin(result);*/
     //console.log("Result " + result);
 }
 
@@ -326,11 +326,37 @@ function onNormalizeSymbols(reel) {
 }
 
 function getVisibleSymbols() {
-    return reels.map((reel) => {
+    /*return reels.map((reel) => {
         return reel.symbols.find((symbol) => {
             return Math.abs(symbol.y - SYMBOL_HEIGHT) < 1
         });
-    });
+    });*/
+
+    let winrow = 0;
+    //Get 1st symbol Y pos compare it will loop of Y pos other than 0 index when Y pos value are equal compare type 
+    for (let i = 0; i < reels[0].symbols.length; i++) {
+        let count = 1;
+        for (let j = 1; j < reels.length; j++) {
+            let flag_same = 0;
+            for (let k = 0; k < reels.symbols.length; k++) {
+                if (reels[0].symbols[i].y == reels[j].symbols[k].y) {
+                    if (reels[0].symbols[i].type === reels[j].symbols[k].type) {
+                        flag_same = 1;
+                    }
+                }
+            }
+
+            if (flag_same == 1) {
+                count++;
+            }
+        }
+
+        if (count == 5) {
+            winrow++;
+        }
+    }
+
+    return winrow;
 }
 
 //Creating Balance Text
@@ -345,12 +371,19 @@ balance_text.y = 20;
 gameContainer.addChild(balance_text);
 
 function checkWin() {
-    const visible = getVisibleSymbols();
+    const winrow = getVisibleSymbols();
+    if (winrow == 0) {
+        console.log("No Win");
+    }
+    else {
+        console.log("Number of Win Rows" + winrow);
+    }
+   /* const visible = getVisibleSymbols();
     const firstType = visible[0].type;
     const isWin = visible.every(sym => sym.type === firstType);
     return {
         isWin, symbols: visible
-    };
+    };*/
 }
 
 function applyWin(result) {
