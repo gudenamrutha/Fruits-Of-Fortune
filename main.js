@@ -97,10 +97,13 @@ function createSymbol(type,color) {
     //Adding image inside color block
     const image = PIXI.Sprite.from(type);
     image.anchor.set(0.5);
-    image.width = symbol.width * FRUIT_SCALE;
-    image.height = symbol.height * FRUIT_SCALE;
-    image.x = symbol.width/2;
-    image.y = symbol.height / 2;
+    const bounds = symbol.getLocalBounds();
+
+    image.width = bounds.width * FRUIT_SCALE;
+    image.height = bounds.height * FRUIT_SCALE;
+
+    image.x = bounds.width / 2;
+    image.y = bounds.height / 2;
     symbol.addChild(image);
     return symbol;
 }
