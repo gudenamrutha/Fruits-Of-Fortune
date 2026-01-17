@@ -423,7 +423,7 @@ function applyWin(result) {
         }
     }
 
-    balance_text.text = "Balance : ${balance}";
+    balance_text.text = `Balance : ${balance}`;
 }
 
 function highlightWin(result) {
