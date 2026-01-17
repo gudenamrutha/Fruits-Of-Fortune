@@ -410,16 +410,16 @@ function checkWin() {
 function applyWin(result) {
     if (result.winningRows == 0) {
         if (result.matching3 > 0) {
-            balance += (BET * matching3 * (1/5))
+            balance += (BET * result.matching3 * (1/5))
         }
         
     }
     else {
-        if (winningRows == 5) {
+        if (result.winningRows == 5) {
             balance += (10 * BET);
         }
         else {
-            balance += (BET * winningRows);
+            balance += (BET * result.winningRows);
         }
     }
 
