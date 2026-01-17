@@ -309,8 +309,8 @@ function stopReel(reel) {
 function onSpinComplete() {
     //sounds.stop.play();
     const result = checkWin();
-/*    applyWin(result);
-    highlightWin(result);*/
+    applyWin(result);
+    /*highlightWin(result);*/
     //console.log("Result " + result);
 }
 
@@ -397,6 +397,8 @@ function checkWin() {
     else {
         console.log("Number of Win Rows" + result.winningRows);
     }
+
+    return result;
    /* const visible = getVisibleSymbols();
     const firstType = visible[0].type;
     const isWin = visible.every(sym => sym.type === firstType);
@@ -406,15 +408,22 @@ function checkWin() {
 }
 
 function applyWin(result) {
-    if (!result.isWin) {
-        return;
+    if (result.winningRows == 0) {
+        if (result.matching3 > 0) {
+            balance += (BET * matching3 * (1/5))
+        }
+        
+    }
+    else {
+        if (winningRows == 5) {
+            balance += (10 * BET);
+        }
+        else {
+            balance += (BET * winningRows);
+        }
     }
 
-    const winAmount = BET * 5;
-    balance += winAmount;
-    balance_text.text = `Balance : ${balance}`;
-    console.log("WIN ...!", winAmount);
-    showWin(winAmount);
+    balance_text.text = "Balance : ${balance}";
 }
 
 function highlightWin(result) {
