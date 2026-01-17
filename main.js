@@ -385,17 +385,17 @@ gameContainer.addChild(balance_text);
 
 function checkWin() {
     const result = getVisibleSymbols();
-    if (result.winrow == 0) {
+    if (result.winningRows == 0) {
         console.log("No Win");
-        if (result.match3 == 0) {
+        if (result.matching3 == 0) {
             console.log("No Match");
         }
         else {
-            console.log("Number of matching rows" + result.match3);
+            console.log("Number of matching rows" + result.matching3);
         }
     }
     else {
-        console.log("Number of Win Rows" + result.winrow);
+        console.log("Number of Win Rows" + result.winningRows);
     }
    /* const visible = getVisibleSymbols();
     const firstType = visible[0].type;
