@@ -414,7 +414,7 @@ function checkWin() {
 }
 
 function applyWin(result) {
-    const winAmount = 0;
+    let winAmount = 0;
     if (result.winningRows == 0) {
         if (result.matching3 > 0) {
             winAmount = (BET * result.matching3 * (1 / 5));
