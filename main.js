@@ -310,7 +310,7 @@ function onSpinComplete() {
     //sounds.stop.play();
     const result = checkWin();
     applyWin(result);
-    /*highlightWin(result);*/
+    highlightWin(result);
     //console.log("Result " + result);
 }
 
@@ -325,6 +325,7 @@ function onNormalizeSymbols(reel) {
     });
 }
 
+const matchingSymbols = [];
 function getVisibleSymbols() {
     let winningRows = 0;
     let matching3 = 0;
@@ -344,6 +345,11 @@ function getVisibleSymbols() {
                     if (firstSymbol.type === currentSymbol.type) {
                         console.log("matched with first symbol");
                         flag_same = 1;
+                        matchingSymbols.push(currentSymbol);
+                        if (!matchingSymbols.includes(firstSymbol)){
+                            matchingSymbols.push(firstSymbol);
+                        }
+                        
 
                     }
                 }
@@ -427,21 +433,23 @@ function applyWin(result) {
 }
 
 function highlightWin(result) {
-    if (!result.isWin) {
-        return;
-    }
-    sounds.win.play();
-    console.log("Highligthing win");
-    result.symbols.forEach(sym => {
-        sym.scale.set(1.1);
-    });
-
-    setTimeout(() => {
-        result.symbols.forEach(sym => {
-            sym.scale.set(1);
+    if (result.winningRows > 0 || result.matching3 > 0) {
+        sounds.win.play();
+        console.log("Highligthing win");
+        matchingSymbols.forEach(sym => {
+            sym.scale.set(1.1);
         });
-    }, 600);
+       
 
+        setTimeout(() => {
+            matchingSymbols.forEach(sym => {
+                sym.scale.set(1);
+            })
+
+        }, 600);
+
+    }
+   
     
 }
 
@@ -485,3 +493,7 @@ function showWin(amount) {
         win_text.visible = false;
     }, 1200);
 }
+
+//Create Rules Button
+
+
