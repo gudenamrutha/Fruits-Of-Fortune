@@ -446,7 +446,7 @@ function highlightWin(result) {
                 sym.scale.set(1);
             })
 
-        }, 600);
+        }, 1500);
 
     }
    
