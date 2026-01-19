@@ -414,18 +414,28 @@ function checkWin() {
 }
 
 function applyWin(result) {
+    const winAmount = 0;
     if (result.winningRows == 0) {
         if (result.matching3 > 0) {
-            balance += (BET * result.matching3 * (1/5))
+            winAmount = (BET * result.matching3 * (1 / 5));
+            balance += winAmount;
+            showWin(winAmount);
         }
         
     }
     else {
         if (result.winningRows == 5) {
-            balance += (10 * BET);
+            winAmount = (10 * BET);
+            balance += winAmount;
+            showWin(winAmount);
+
+
         }
         else {
-            balance += (BET * result.winningRows);
+            winAmount = (BET * result.winningRows);
+            balance += winAmount;
+            showWin(winAmount);
+
         }
     }
 
