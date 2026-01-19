@@ -329,7 +329,7 @@ const matchingSymbols = [];
 function getVisibleSymbols() {
     let winningRows = 0;
     let matching3 = 0;
-
+    matchingSymbols.clear();
     // Loop through each ROW
     for (let row = 0; row < SYMBOLS_PER_REEL; row++) {
         const firstSymbol = reels[0].symbols[row];
