@@ -111,7 +111,6 @@ function createSymbol(type,color) {
 //Creating Reels
 
 const reels = [];
-let existedSymbols = [];
 const colors = [0xffd770, 0x00ff00, 0xff0000, 0x0000ff]
 for (let i = 0; i < REEL_COUNT; i++) {
     //Creating Reel
@@ -121,11 +120,9 @@ for (let i = 0; i < REEL_COUNT; i++) {
     reel.symbols = [];
     reel.speed = 0;
 
-    existedSymbols.clear();
     //Creating Symbols inside the reel
     for (let j = 0; j < SYMBOLS_PER_REEL; j++) {
-        const index = Math.floor(Math.random() * SYMBOLS_PER_REEL);
-        const data = SYMBOL_TYPES[index]; 
+        const data = SYMBOL_TYPES[j]; 
         const symbol = createSymbol(data.type, data.color);
         symbol.y = j * (SYMBOL_SIZE + SYMBOL_GAP);
         reel.addChild(symbol);
@@ -135,10 +132,6 @@ for (let i = 0; i < REEL_COUNT; i++) {
     reels.push(reel);
 }
 
-function FindRandomIndex() {
-    const random = Math.floor(Math.random() * SYMBOLS_PER_REEL);
-    return random;
-}
 //Centering Reels to center of screen
 //reelsContainer.anchor.set(0.5);
 const totalwidth = (REEL_COUNT * SYMBOL_SIZE) + ((REEL_COUNT - 1) * REEL_GAP);
